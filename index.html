@@ -12,26 +12,24 @@
 </head>
 
 <body class="bg-primary">
-  <div id="quote-box" class="container p-5 rounded bg-white">
+  <div id="quote-box" class="container d-flex p-5 flex-column justify-content-around align-items-center rounded">
     <div id="text" class="text-center">
-        <i class="fa fa-quote-left" id="quotes1"></i>
-        <h1>This is a Sample Quote</h1>
-        <i class="fa fa-quote-right" id="quotes2"></i>
+        <i class="fa fa-quote-left" id="quotes1"></i><h1>This is a Sample Quote</h1><i class="fa fa-quote-right" id="quotes2"></i>
     </div>
-    <div id="author" class="text-right mt-3">
-      <span>By <h4>Arav Arora</h4></span>
+    <div id="author" class="text-right w-100">
+      <span>By <h4>Arav Arora</h4> </span>
     </div>
 
-    <div class="button-container mt-3 d-flex justify-content-between">
+    <div class="button-container">
       <div>
-        <a class="btn btn-primary me-2" id="tweet-quote" title="Tweet this quote!" target="_blank">
+        <a class="btn btn-primary me-2 button" id="tweet-quote" title="Tweet this quote!" target="_blank">
           <i class="fa fa-twitter"></i>
         </a>
-        <a class="btn btn-primary" id="tumblr-quote" title="Post this quote on tumblr!" target="_blank">
+        <a class="btn btn-primary button" id="tumblr-quote" title="Post this quote on tumblr!" target="_blank">
           <i class="fa fa-tumblr"></i>
         </a>
       </div>
-      <button class="btn btn-primary" id="new-quote">New Quote</button>
+      <button class="btn btn-primary button" id="new-quote">New Quote</button>
     </div>
   </div>
 
@@ -39,14 +37,14 @@
   <script>
     $(document).ready(function() {
       const colors = [
-        "#6B728E", "#A0AEC0", "#718096", "#4A5568", "#2D3748", "#1A202C", "#2C5282", "#2A4365", "#2C7A7B", "#285E61",
-        "#276749", "#22543D", "#4C51BF", "#434190", "#805AD5", "#6B46C1", "#D53F8C", "#B83280", "#E53E3E", "#C53030"
+        "#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#FFBD33", "#8D33FF", "#33FFF6", "#F633FF", "#33FFBD", "#FFC433",
+        "#FF5733", "#33FFB5", "#FF33E6", "#57FF33", "#3375FF", "#FF8D33", "#33FFFC", "#B533FF", "#FF3333", "#33FF8D"
       ];
       const url = "quotes.json";
       let quotesData = [];
-      let randomQuote = "";
-      let randomQuoteAuthor = "";
-      
+      $("#text h1").text("Sample Quote");
+        let randomQuote = "";
+        let randomQuoteAuthor = "";
       function fetchQuotes() {
         $.getJSON(url, function(data) {
           quotesData = data;
@@ -69,27 +67,30 @@
           $("#text h1").text(randomQuote);
           $("#author h4").text(randomQuoteAuthor);
           $("#text").css({"color": randomColor});
-          $("#author").css({"color": randomColor});
+        $("#author").css({"color": randomColor});
           $("#text").fadeIn(1000);
           $("#author").fadeIn(1000);
-        }, 1000);
-      }
+        }, 1000)
+       }
        
-      $("#tweet-quote").on("click", function() {
-        window.open("https://twitter.com/intent/tweet?hashtags=CodingCoolThings&related=freecodecamp&text=" + encodeURIComponent(randomQuote + " " + randomQuoteAuthor), "_blank");
-      });
-      
-      $("#tumblr-quote").on("click", function() {
-        window.open(
-          "https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=CodingCoolThings,freecodecamp&caption=" + 
-          encodeURIComponent(randomQuoteAuthor) + 
-          "&content=" + 
-          encodeURIComponent(randomQuote) + 
-          "&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button"
-        );
-      });
 
-      $("#new-quote").on("click", changeQuote);
+       $("#tweet-quote").on("click", function() {
+            window.open("https://twitter.com/intent/tweet?hashtags=CodingCoolThings&related=freecodecamp&text=" + encodeURIComponent(randomQuote + " " + randomQuoteAuthor), "_blank");
+       });
+       $("#tumblr-quote").on("click", function() {
+  window.open(
+    "https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=CodingCoolThings,freecodecamp&caption=" + 
+    encodeURIComponent(randomQuoteAuthor) + 
+    "&content=" + 
+    encodeURIComponent(randomQuote) + 
+    "&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button"
+  );
+
+
+});
+
+
+       $("#new-quote").on("click", changeQuote);
       
       fetchQuotes();
     });

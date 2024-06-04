@@ -1,0 +1,43 @@
+#quote-box {
+    margin: auto;
+    max-width: 400px;
+    border-radius: 15px;
+    padding: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+  }
+  
+  .button-container {
+    width: 100%;
+  }
+  
+  #quotes1, #quotes2 {
+    position: relative;
+    top: -7px;
+    font-size: 25px;
+  }
+  
+  #quotes1 {
+    margin-left: 4px;
+  }
+  
+  #quotes2 {
+    margin-right: 4px;
+  }
+  
+  #author h4, #author span {
+    font-size: 15px;
+  }
+  
+  #text h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-top: 5px;
+  }
+  
+  h1, h4 {
+    display: inline;
+  }
+  
